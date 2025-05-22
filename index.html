@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Agentes Ganamos</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      background: #f5f5f7;
+      color: #333;
+    }
+    header {
+      background: #0077cc;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-weight: normal;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    section.agents {
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+      gap: 20px;
+      margin-bottom: 50px;
+    }
+    .agent-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+    .agent-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+    .agent-card h3 {
+      margin: 8px 0 4px;
+      font-size: 1.1em;
+      color: #0077cc;
+    }
+    .agent-card p {
+      margin: 0;
+      font-size: 0.9em;
+      color: #555;
+    }
+    section.contact {
+      background: white;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto 40px;
+    }
+    section.contact h2 {
+      margin-bottom: 20px;
+      color: #0077cc;
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 1em;
+      resize: vertical;
+    }
+    button {
+      background: #0077cc;
+      border: none;
+      color: white;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9em;
+      color: #777;
+      background: #eaeaea;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Agentes Ganamos</h1>
+  </header>
+  <main>
+    <section class="agents" aria-label="Lista de agentes">
+      <article class="agent-card">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Juan Pérez" />
+        <h3>Juan Pérez</h3>
+        <p>Especialista en ventas</p>
+        <p>juan.perez@ganamos.biz</p>
+      </article>
+      <article class="agent-card">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de María Gómez" />
+        <h3>María Gómez</h3>
+        <p>Atención al cliente</p>
+        <p>maria.gomez@ganamos.biz</p>
+      </article>
+      <article class="agent-card">
+        <img src="https://randomuser.me/api/portraits/men/56.jpg" alt="Foto de Carlos Ruiz" />
+        <h3>Carlos Ruiz</h3>
+        <p>Soporte técnico</p>
+        <p>carlos.ruiz@ganamos.biz</p>
+      </article>
+    </section>
+    <section class="contact" aria-label="Formulario de contacto">
+      <h2>Contáctanos</h2>
+      <form id="contact-for
+m" novalidate>
+        <label for="name">Nombre</label>
+        <input type="text" id="name" name="name" placeholder="Tu nombre" required />
+
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+
+        <label for="message">Mensaje</label>
+        <textarea id="message" name="message" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+      <p id="form-msg" style="color: green; display: none; text-align:center; margin-top:15px;"></p>
+    </section>
+  </main>
+  <footer>
+    © 2024 Agentes Ganamos. Todos los derechos reservados.
+  </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const msg = document.getElementById('form-msg');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+
+      if (!name || !email || !message) {
+        alert('Por favor, completa todos los campos.');
+        return;
+      }
+
+      // Simula envío
+      msg.textContent = 'Enviando mensaje...';
+      msg.style.color = 'blue';
+      
+      setTimeout(() => {
+        msg.textContent = 'Mensaje enviado correctamente. ¡Gracias!';
+        msg.style.color = 'green';
+        form.reset();
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
